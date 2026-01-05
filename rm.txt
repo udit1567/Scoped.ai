@@ -1,2 +1,2 @@
-some informationaplay -D plughw:0,0 respeaker_test.wav
+
 
