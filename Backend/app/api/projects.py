@@ -1,11 +1,11 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from app.core.security import get_current_user
 
-router = APIRouter()
-
-@router.post("/create")
-def create_project():
-    return {"message": "Project created"}
+router = APIRouter(prefix="/projects", tags=["Projects"])
 
 @router.get("/")
-def list_projects():
-    return {"projects": []}
+def get_projects(current_user: str = Depends(get_current_user)):
+    return {
+        "message": "Projects data",
+        "user": current_user
+    }
